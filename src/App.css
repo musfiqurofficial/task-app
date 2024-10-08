@@ -1,0 +1,7 @@
+.slick-slide {
+    margin: 0 10px; /* Adjust the value to set the desired gap */
+  }
+
+  .slick-list{
+    height: 300px !important;
+  }
