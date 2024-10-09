@@ -1,7 +1,17 @@
-.slick-slide {
-    margin: 0 10px; /* Adjust the value to set the desired gap */
-  }
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+    content: 'next';
+}
 
-  .slick-list{
-    height: 300px !important;
-  }
+.swiper-button-prev:after, .swiper-button-next:after {
+    font-family: swiper-icons;
+    font-size: 18px !important;
+    text-transform: none !important;
+    letter-spacing: 0;
+    font-variant: initial;
+    line-height: 1;
+    color: #4B44BB;
+}
+
+.swiper-button-prev:hover:after, .swiper-button-next:hover:after {
+    color: #fff;
+}

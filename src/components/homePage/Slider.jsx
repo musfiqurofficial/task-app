@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
-
-import Slider from "react-slick";
-import {
-  MdOutlineKeyboardArrowLeft,
-  MdOutlineKeyboardArrowRight,
-} from "react-icons/md";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 import vector from "../../assets/images/Vector (1).png";
 import img1 from "../../assets/images/image 1201.png";
@@ -56,54 +54,33 @@ const SliderCard = () => {
     },
   ];
 
-  const NextArrow = ({ onClick }) => (
-    <div
-      className="absolute top-1/2 -right-10 transform -translate-y-1/2 border border-[#4B44BB] hover:bg-[#4B44BB] rounded-full cursor-pointer z-20 w-8 h-8 flex justify-center items-center text-[#7c29e9] hover:text-[white]"
-      onClick={onClick}
-    >
-      <MdOutlineKeyboardArrowRight className="w-5 h-5" />
-    </div>
-  );
-
-  const PrevArrow = ({ onClick }) => (
-    <div
-      className="absolute top-1/2 -left-10 transform -translate-y-1/2 border border-[#4B44BB] hover:bg-[#4B44BB] rounded-full cursor-pointer z-20 w-8 h-8 flex justify-center items-center text-[#7c29e9] hover:text-[white]"
-      onClick={onClick}
-    >
-      <MdOutlineKeyboardArrowLeft className="w-5 h-5" />
-    </div>
-  );
-
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-  };
-
   return (
-    <div className="mt-10">
-      <div className="relative">
-        <Slider {...settings}>
-          {sliderCont.map((image) => (
-            <div
-              key={image.id}
-              className="!rounded-[20px] border-[1px] p-[40px] hover:shadow-2xl bg-white"
-            >
+    <div className="relative my-14">
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={30}
+        slidesPerView={3}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        loop={true}
+      >
+        {sliderCont.map((image) => (
+          <SwiperSlide key={image.id}>
+            <div className="!rounded-[20px] border-[1px] p-[40px] bg-white transform transition-transform duration-300 hover:scale-110">
               <div className="flex justify-between items-start">
                 <div className="border border-gray-300 bg-slate-50 rounded-full w-[58px] h-[58px] overflow-hidden">
                   <img
-                    src={img1}
-                    alt=""
+                    src={image.src}
+                    alt={image.name}
                     className="w-20 h-auto object-center"
                   />
                 </div>
                 <img src={vector} alt="" className="w-auto h-[58px]" />
               </div>
-              <h4 className="text-[20px] font-medium mt-1">Joe Root</h4>
-              <p className="text-[14px]">Marketing Specialist</p>
+              <h4 className="text-[20px] font-medium mt-1">{image.name}</h4>
+              <p className="text-[14px]">{image.title}</p>
               <div className="flex justify-start items-center gap-1 my-[10px]">
                 <img src={startIcon} alt="" className="w-auto h-[20px]" />
                 <img src={startIcon} alt="" className="w-auto h-[20px]" />
@@ -111,15 +88,13 @@ const SliderCard = () => {
                 <img src={startIcon} alt="" className="w-auto h-[20px]" />
                 <img src={startIcon} alt="" className="w-auto h-[20px]" />
               </div>
-              <p className="text-[14px]">
-                “The ease of use, quality of coffee, and the outstanding
-                customer support make with Corfeel choice for all things
-                coffee.&quot;
-              </p>
+              <p className="text-[14px]">{image.description}</p>
             </div>
-          ))}
-        </Slider>
-      </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <div className="swiper-button-next absolute top-[55%] -right-12 transform -translate-y-[55%] border hover:text-white border-[#4B44BB] hover:bg-[#4B44BB] z-30 bg-blue-60 w-10 h-10 rounded-full"></div>
+      <div className="swiper-button-prev absolute top-[55%] -left-12 transform -translate-y-[55%] border hover:text-white border-[#4B44BB] hover:bg-[#4B44BB] z-30 bg-blue-60 w-10 h-10 rounded-full"></div>
     </div>
   );
 };

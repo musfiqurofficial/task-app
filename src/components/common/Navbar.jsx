@@ -14,7 +14,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#1B0C4D] text-white sticky top-0 z-50">
+    <div className="bg-[#1b0c4d] text-white sticky top-0 z-50">
       <div className="px-4 sm:px-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-[1170px]">
         <div className="relative flex items-center justify-between h-[80px]">
           <a
